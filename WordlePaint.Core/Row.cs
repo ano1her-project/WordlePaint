@@ -31,6 +31,25 @@ public class Row
         return true;
     }
 
+    public static Row FromString(string s)
+    {
+        if (s.Length != 5)
+            throw new Exception();
+        LetterColor[] result = new LetterColor[5];
+        for (int i = 0; i < 5; i++)
+        {
+            result[i] = s[i] switch
+            {
+                'B' => LetterColor.Black,
+                'X' => LetterColor.Black,
+                'Y' => LetterColor.Yellow,
+                'G' => LetterColor.Green,
+                _ => throw new Exception()
+            };
+        }
+        return new(result);
+    }
+
     public static Row MatchWords(string goal, string guess)
     {
         LetterColor[] result = new LetterColor[5];
