@@ -1,5 +1,4 @@
-﻿using System.ComponentModel.Design;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using WordlePaint.Core;
 
 namespace WordlePaint.Interface;

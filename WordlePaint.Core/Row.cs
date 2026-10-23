@@ -84,4 +84,51 @@ public class Row
         // we have to do this so that guesses with duplicate letters are colored correctly.
         return new Row(result);
     }
+
+    public bool IsSatisfiedBy(string goal, string guess)
+    {
+        var remainingLetters = goal.ToCharArray().ToList();
+        // first pass
+        for (int i = 0; i < 5; i++)
+        {
+            switch (cells[i])
+            {
+                case LetterColor.Black:
+                case LetterColor.Yellow:
+                    if (guess[i] == goal[i]) // on this first pass, this is all we can filter out (with regards to yellows and blacks.)
+                        return false;
+                    break;
+                case LetterColor.Green:
+                    if (guess[i] == goal[i])
+                        remainingLetters.Remove(guess[i]);
+                    else
+                        return false;
+                    break;
+                default:
+                    throw new UnreachableException();
+            }
+        }
+        // second pass, now that remaining letters has none of the greens:
+        for (int i = 0; i < 5; i++)
+        {
+            switch (cells[i])
+            {
+                case LetterColor.Black:
+                    if (remainingLetters.Contains(guess[i]))
+                        return false;
+                    break;
+                case LetterColor.Yellow:
+                    if (remainingLetters.Contains(guess[i]))
+                        remainingLetters.Remove(guess[i]);
+                    else
+                        return false;
+                    break;
+                case LetterColor.Green:
+                    break;
+                default:
+                    throw new UnreachableException();
+            }
+        }
+        return true;
+    }
 }
