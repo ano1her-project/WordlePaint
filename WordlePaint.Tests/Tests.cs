@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using WordlePaint.Core;
+using WordlePaint.Searcher;
 
 namespace WordlePaint.Tests;
 
@@ -31,14 +32,7 @@ public class Tests
 
     [Fact]
     public void MatchWordsAndIsSatisfiedByAreEquivalent()
-    {
-        int amtOfGoalWithSolutions = 0;
-        var sw = Stopwatch.StartNew();
-        for (int i = 0; i < Wordlist.goals.Length; i++)
-        {
-            var result = SearchGuessesToSatisfyPatternForGoal(Wordlist.goals[i], out bool succeeded);
-            if (succeeded)
-                amtOfGoalWithSolutions++;
-        }
-    }
+        => Assert.Equal(
+            Searcher.Searcher.SearchGuessesThatMatchPatternForAllGoals(Pattern.presets["green67"], null),
+            Searcher.Searcher.SearchGuessesThatSatisfyPatternForAllGoals(Pattern.presets["green67"], null));
 }

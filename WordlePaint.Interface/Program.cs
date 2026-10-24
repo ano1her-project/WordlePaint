@@ -61,7 +61,7 @@ internal class Program
                 if (subs[1] == "all")
                 {
                     var sw = Stopwatch.StartNew();
-                    var amtOfGoalsWithSolutions = Searcher.Searcher.SearchGuessesThatMatchPatternForAllGoals(targetPattern, AnnounceSolution);
+                    var amtOfGoalsWithSolutions = Searcher.Searcher.SearchGuessesThatSatisfyPatternForAllGoals(targetPattern, AnnounceSolution);
                     var time = sw.Elapsed;
                     Console.WriteLine($"finished in {time}:");
                     Console.WriteLine($"found solutions for {amtOfGoalsWithSolutions}/{Wordlist.goals.Length} goals.");
@@ -69,7 +69,7 @@ internal class Program
                 else
                 {
                     var sw = Stopwatch.StartNew();
-                    var result = Searcher.Searcher.SearchGuessesThatMatchPatternForGoal(targetPattern, subs[1], out _);
+                    var result = Searcher.Searcher.SearchGuessesThatSatisfyPatternForGoal(targetPattern, subs[1], out _);
                     var time = sw.Elapsed;
                     Console.WriteLine($"found in {time}:");
                     Console.WriteLine(subs[1]);

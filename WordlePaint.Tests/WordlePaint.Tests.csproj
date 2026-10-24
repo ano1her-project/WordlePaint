@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\WordlePaint.Core\WordlePaint.Core.csproj" />
+    <ProjectReference Include="..\WordlePaint.Searcher\WordlePaint.Searcher.csproj" />
   </ItemGroup>
 
   <ItemGroup>
