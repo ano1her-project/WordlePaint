@@ -1,13 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36401.2 d17.14
+VisualStudioVersion = 17.14.36401.2
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WordlePaint.Core", "WordlePaint.Core\WordlePaint.Core.csproj", "{8134A26B-82B5-4CC3-BDB2-59A2FDE972D3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WordlePaint.Tests", "WordlePaint.Tests\WordlePaint.Tests.csproj", "{21ADCBA4-D2D6-4E08-97F6-47351F6D584A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WordlePaint.Interface", "WordlePaint.Interface\WordlePaint.Interface.csproj", "{50332BFE-CBF3-95D0-79F3-22B4A21BC45E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WordlePaint.Searcher", "WordlePaint.Searcher\WordlePaint.Searcher.csproj", "{24C74E65-AE3D-4A67-96ED-89CE357E999B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{50332BFE-CBF3-95D0-79F3-22B4A21BC45E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{50332BFE-CBF3-95D0-79F3-22B4A21BC45E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{50332BFE-CBF3-95D0-79F3-22B4A21BC45E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24C74E65-AE3D-4A67-96ED-89CE357E999B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24C74E65-AE3D-4A67-96ED-89CE357E999B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24C74E65-AE3D-4A67-96ED-89CE357E999B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24C74E65-AE3D-4A67-96ED-89CE357E999B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,4 +1,5 @@
-﻿using WordlePaint.Core;
+﻿using System.Diagnostics;
+using WordlePaint.Core;
 
 namespace WordlePaint.Tests;
 
@@ -27,4 +28,17 @@ public class Tests
     [InlineData(LetterColor.Black, LetterColor.Black, LetterColor.Yellow, LetterColor.Yellow, LetterColor.Green, "beret", "sheet", false)]
     public void RowIsSatisfiedBy(LetterColor resultCell1, LetterColor resultCell2, LetterColor resultCell3, LetterColor resultCell4, LetterColor resultCell5, string goal, string guess, bool result)
         => Assert.Equal(new Row(resultCell1, resultCell2, resultCell3, resultCell4, resultCell5).IsSatisfiedBy(goal, guess), result);
+
+    [Fact]
+    public void MatchWordsAndIsSatisfiedByAreEquivalent()
+    {
+        int amtOfGoalWithSolutions = 0;
+        var sw = Stopwatch.StartNew();
+        for (int i = 0; i < Wordlist.goals.Length; i++)
+        {
+            var result = SearchGuessesToSatisfyPatternForGoal(Wordlist.goals[i], out bool succeeded);
+            if (succeeded)
+                amtOfGoalWithSolutions++;
+        }
+    }
 }

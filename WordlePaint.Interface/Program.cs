@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using WordlePaint.Core;
+using WordlePaint.Searcher;
 
 namespace WordlePaint.Interface;
 
@@ -59,27 +60,16 @@ internal class Program
                 }
                 if (subs[1] == "all")
                 {
-                    int amtOfGoalWithSolutions = 0;
                     var sw = Stopwatch.StartNew();
-                    for (int i = 0; i < Wordlist.goals.Length; i++)
-                    {
-                        bool succeeded = false;
-                        var result = SearchGuessesToSatisfyPatternForGoal(Wordlist.goals[i], out succeeded);
-                        if (succeeded)
-                        {
-                            amtOfGoalWithSolutions++;
-                            Console.WriteLine($"found one! - {Wordlist.goals[i]} - word {i}/{Wordlist.goals.Length} in the list. it's the {amtOfGoalWithSolutions}th one.");
-                            PrettyPrinter.Print(targetPattern, result);
-                        }
-                    }
+                    var amtOfGoalsWithSolutions = Searcher.Searcher.SearchGuessesThatMatchPatternForAllGoals(targetPattern, AnnounceSolution);
                     var time = sw.Elapsed;
                     Console.WriteLine($"finished in {time}:");
-                    Console.WriteLine($"found solutions for {amtOfGoalWithSolutions}/{Wordlist.goals.Length} goals.");
+                    Console.WriteLine($"found solutions for {amtOfGoalsWithSolutions}/{Wordlist.goals.Length} goals.");
                 }
                 else
                 {
                     var sw = Stopwatch.StartNew();
-                    var result = SearchGuessesToSatisfyPatternForGoal(subs[1], out _);
+                    var result = Searcher.Searcher.SearchGuessesThatMatchPatternForGoal(targetPattern, subs[1], out _);
                     var time = sw.Elapsed;
                     Console.WriteLine($"found in {time}:");
                     Console.WriteLine(subs[1]);
@@ -92,25 +82,9 @@ internal class Program
         }
     }
 
-    static string[] SearchGuessesToSatisfyPatternForGoal(string goal, out bool succeeded)
+    public static void AnnounceSolution(Pattern targetPattern, string goal, string[] result, int goalIndex, int solutionOrdinal)
     {
-        succeeded = true;
-        var result = new string[6];
-        for (int i = 0; i < 6; i++)
-        {
-            foreach (var guess in Wordlist.guesses)
-            {
-                if (!Row.MatchWords(goal, guess).Equals(targetPattern.rows[i]))
-                    continue;
-                result[i] = guess;
-                break;
-            }
-            if (result[i] is null)
-            {
-                result[i] = "_";
-                succeeded = false;
-            }
-        }
-        return result;
+        Console.WriteLine($"found one! - {goal} - {solutionOrdinal}. goal with a solution - {goalIndex}/{Wordlist.goals.Length} in the list.");
+        PrettyPrinter.Print(targetPattern, result);
     }
 }
