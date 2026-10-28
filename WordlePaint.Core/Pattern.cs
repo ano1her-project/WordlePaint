@@ -2,7 +2,7 @@
 
 public class Pattern
 {
-    public Row[] rows = new Row[6];
+    public Row[] rows;
 
     public Pattern(Row[] p_rows)
     {
@@ -19,7 +19,9 @@ public class Pattern
     public override bool Equals(object? obj)
     {
         var other = obj as Pattern;
-        for (int i = 0; i < 6; i++)
+        if (rows.Length != other.rows.Length)
+            return false;
+        for (int i = 0; i < rows.Length; i++)
         {
             if (!rows[i].Equals(other.rows[i]))
                 return false;

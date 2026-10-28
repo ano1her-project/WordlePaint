@@ -1,6 +1,6 @@
 ﻿using WordlePaint.Core;
 
-namespace WordlePaint.Searcher;
+namespace WordlePaint.Search;
 
 public class Searcher
 {
@@ -10,8 +10,8 @@ public class Searcher
     public static string[] SearchGuessesThatMatchPatternForGoal(Pattern targetPattern, string goal, out bool succeeded) 
     {
         succeeded = true;
-        var result = new string[6];
-        for (int i = 0; i < 6; i++)
+        var result = new string[targetPattern.rows.Length];
+        for (int i = 0; i < result.Length; i++)
         {
             foreach (var guess in Wordlist.guesses)
             {
@@ -51,8 +51,8 @@ public class Searcher
     public static string[] SearchGuessesThatSatisfyPatternForGoal(Pattern targetPattern, string goal, out bool succeeded)
     {
         succeeded = true;
-        var result = new string[6];
-        for (int i = 0; i < 6; i++)
+        var result = new string[targetPattern.rows.Length];
+        for (int i = 0; i < result.Length; i++)
         {
             foreach (var guess in Wordlist.guesses)
             {

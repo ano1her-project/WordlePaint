@@ -9,7 +9,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WordlePaint.Tests", "Wordle
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WordlePaint.Interface", "WordlePaint.Interface\WordlePaint.Interface.csproj", "{50332BFE-CBF3-95D0-79F3-22B4A21BC45E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WordlePaint.Searcher", "WordlePaint.Searcher\WordlePaint.Searcher.csproj", "{24C74E65-AE3D-4A67-96ED-89CE357E999B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WordlePaint.Spy", "WordlePaint.Spy\WordlePaint.Spy.csproj", "{DACFA6B2-FF3D-4EFE-9024-BCA8A83AF9E4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WordlePaint.Search", "WordlePaint.Search\WordlePaint.Search.csproj", "{CDB26F74-AF64-D380-D768-815634C3F01F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +31,14 @@ Global
 		{50332BFE-CBF3-95D0-79F3-22B4A21BC45E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{50332BFE-CBF3-95D0-79F3-22B4A21BC45E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{50332BFE-CBF3-95D0-79F3-22B4A21BC45E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{24C74E65-AE3D-4A67-96ED-89CE357E999B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{24C74E65-AE3D-4A67-96ED-89CE357E999B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{24C74E65-AE3D-4A67-96ED-89CE357E999B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{24C74E65-AE3D-4A67-96ED-89CE357E999B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DACFA6B2-FF3D-4EFE-9024-BCA8A83AF9E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DACFA6B2-FF3D-4EFE-9024-BCA8A83AF9E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DACFA6B2-FF3D-4EFE-9024-BCA8A83AF9E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DACFA6B2-FF3D-4EFE-9024-BCA8A83AF9E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CDB26F74-AF64-D380-D768-815634C3F01F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDB26F74-AF64-D380-D768-815634C3F01F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CDB26F74-AF64-D380-D768-815634C3F01F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CDB26F74-AF64-D380-D768-815634C3F01F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

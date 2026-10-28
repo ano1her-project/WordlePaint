@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 using WordlePaint.Core;
-using WordlePaint.Searcher;
+using WordlePaint.Search;
 
 namespace WordlePaint.Tests;
 
@@ -33,6 +33,6 @@ public class Tests
     [Fact]
     public void MatchWordsAndIsSatisfiedByAreEquivalent()
         => Assert.Equal(
-            Searcher.Searcher.SearchGuessesThatMatchPatternForAllGoals(Pattern.presets["green67"], null),
-            Searcher.Searcher.SearchGuessesThatSatisfyPatternForAllGoals(Pattern.presets["green67"], null));
+            Searcher.SearchGuessesThatMatchPatternForAllGoals(Pattern.presets["green67"], null),
+            Searcher.SearchGuessesThatSatisfyPatternForAllGoals(Pattern.presets["green67"], null));
 }
