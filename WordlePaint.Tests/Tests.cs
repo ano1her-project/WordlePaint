@@ -29,10 +29,4 @@ public class Tests
     [InlineData(LetterColor.Black, LetterColor.Black, LetterColor.Yellow, LetterColor.Yellow, LetterColor.Green, "beret", "sheet", false)]
     public void RowIsSatisfiedBy(LetterColor resultCell1, LetterColor resultCell2, LetterColor resultCell3, LetterColor resultCell4, LetterColor resultCell5, string goal, string guess, bool result)
         => Assert.Equal(new Row(resultCell1, resultCell2, resultCell3, resultCell4, resultCell5).IsSatisfiedBy(goal, guess), result);
-
-    [Fact]
-    public void MatchWordsAndIsSatisfiedByAreEquivalent()
-        => Assert.Equal(
-            Searcher.SearchGuessesThatMatchPatternForAllGoals(Pattern.presets["green67"], null),
-            Searcher.SearchGuessesThatSatisfyPatternForAllGoals(Pattern.presets["green67"], null));
 }

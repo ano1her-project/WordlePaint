@@ -27,8 +27,8 @@ internal class Program
             case "help":
                 Console.WriteLine("help                            - Lists all commands.");
                 Console.WriteLine("pattern presets                 - Lists all pattern presets.");
-                Console.WriteLine("pattern set preset (presetName) - Sets the current target pattern.");
-                Console.WriteLine("match (goal) (guess)            - Shows you what a guess would look like for a particular goal, like if you were playing normal Wordle.");
+                Console.WriteLine("pattern set (presetName)        - Sets the current target pattern.");
+                Console.WriteLine("match (goal) (guess)            - Shows you what a guess would look like for a particular goal, as if you were playing normal Wordle.");
                 Console.WriteLine("searchfor (goal)                - Searches for a series of guesses that would create the target pattern for a specific goal word.");
                 Console.WriteLine("searchfor all                   - Searches for a series of guesses that would create the target pattern for all goal words, then prints out a summary.");
                 break;
@@ -41,8 +41,8 @@ internal class Program
                         PrettyPrinter.Print(kvp.Value);
                     }
                 }
-                else if (subs.Length == 4 && subs[1] == "set" && subs[2] == "preset")
-                    targetPattern = Pattern.presets[subs[3]];
+                else if (subs.Length == 3 && subs[1] == "set")
+                    targetPattern = Pattern.presets[subs[2]];
                 else
                     Console.WriteLine("invalid arguments.");
                 break;
@@ -61,7 +61,7 @@ internal class Program
                 if (subs[1] == "all")
                 {
                     var sw = Stopwatch.StartNew();
-                    var amtOfGoalsWithSolutions = Searcher.SearchGuessesThatSatisfyPatternForAllGoals(targetPattern, AnnounceSolution);
+                    var amtOfGoalsWithSolutions = Searcher.GuessesThatSatisfyPatternForAllGoals(targetPattern, AnnounceSolution);
                     var time = sw.Elapsed;
                     Console.WriteLine($"finished in {time}:");
                     Console.WriteLine($"found solutions for {amtOfGoalsWithSolutions}/{Wordlist.goals.Length} goals.");
@@ -69,7 +69,7 @@ internal class Program
                 else
                 {
                     var sw = Stopwatch.StartNew();
-                    var result = Searcher.SearchGuessesThatSatisfyPatternForGoal(targetPattern, subs[1], out _);
+                    var result = Searcher.AllGuessesThatSatisfyPatternForGoal(targetPattern, subs[1]);
                     var time = sw.Elapsed;
                     Console.WriteLine($"found in {time}:");
                     Console.WriteLine(subs[1]);

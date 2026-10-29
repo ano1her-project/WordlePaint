@@ -4,51 +4,7 @@ namespace WordlePaint.Search;
 
 public class Searcher
 {
-    // using Row.MatchWords():
-
-    [Obsolete]
-    public static string[] SearchGuessesThatMatchPatternForGoal(Pattern targetPattern, string goal, out bool succeeded) 
-    {
-        succeeded = true;
-        var result = new string[targetPattern.rows.Length];
-        for (int i = 0; i < result.Length; i++)
-        {
-            foreach (var guess in Wordlist.guesses)
-            {
-                if (!Row.MatchWords(goal, guess).Equals(targetPattern.rows[i]))
-                    continue;
-                result[i] = guess;
-                break;
-            }
-            if (result[i] is null)
-            {
-                result[i] = "_";
-                succeeded = false;
-            }
-        }
-        return result;
-    }
-
-    [Obsolete]
-    public static int SearchGuessesThatMatchPatternForAllGoals(Pattern targetPattern, Action<Pattern, string, string[], int, int>? solutionAnnouncement)
-    {
-        int amtOfGoalsWithSolutions = 0;
-        for (int i = 0; i < Wordlist.goals.Length; i++)
-        {
-            var result = SearchGuessesThatMatchPatternForGoal(targetPattern, Wordlist.goals[i], out bool succeeded);
-            if (succeeded)
-            {
-                amtOfGoalsWithSolutions++;
-                if (solutionAnnouncement is not null)
-                    solutionAnnouncement(targetPattern, Wordlist.goals[i], result, i, amtOfGoalsWithSolutions);
-            }
-        }
-        return amtOfGoalsWithSolutions;
-    }
-
-    // using Row.IsSatisfiedBy():
-
-    public static string[] SearchGuessesThatSatisfyPatternForGoal(Pattern targetPattern, string goal, out bool succeeded)
+    public static string[] GuessesThatSatisfyPatternForGoal(Pattern targetPattern, string goal, out bool succeeded)
     {
         succeeded = true;
         var result = new string[targetPattern.rows.Length];
@@ -70,12 +26,28 @@ public class Searcher
         return result;
     }
 
-    public static int SearchGuessesThatSatisfyPatternForAllGoals(Pattern targetPattern, Action<Pattern, string, string[], int, int>? solutionAnnouncement)
+    public static string[][] AllGuessesThatSatisfyPatternForGoal(Pattern targetPattern, string goal)
+    {
+        var result = new string[targetPattern.rows.Length][];
+        for (int i = 0; i < result.Length; i++)
+        {
+            List<string> ithRowResult = [];
+            foreach (var guess in Wordlist.guesses)
+            {
+                if (targetPattern.rows[i].IsSatisfiedBy(goal, guess))
+                    ithRowResult.Add(guess);
+            }
+            result[i] = ithRowResult.ToArray();
+        }
+        return result;
+    }
+
+    public static int GuessesThatSatisfyPatternForAllGoals(Pattern targetPattern, Action<Pattern, string, string[], int, int>? solutionAnnouncement)
     {
         int amtOfGoalsWithSolutions = 0;
         for (int i = 0; i < Wordlist.goals.Length; i++)
         {
-            var result = SearchGuessesThatSatisfyPatternForGoal(targetPattern, Wordlist.goals[i], out bool succeeded);
+            var result = GuessesThatSatisfyPatternForGoal(targetPattern, Wordlist.goals[i], out bool succeeded);
             if (succeeded)
             {
                 amtOfGoalsWithSolutions++;

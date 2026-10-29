@@ -44,4 +44,15 @@ public class PrettyPrinter
             Console.WriteLine($" {guesses[i]}");
         }
     }
+
+    public static void Print(Pattern pattern, string[][] guesses)
+    {
+        if (pattern.rows.Length != guesses.Length)
+            throw new Exception();
+        for (int i = 0; i < pattern.rows.Length; i++)
+        {
+            Print(pattern.rows[i], false);
+            Console.WriteLine($" {string.Join(", ", guesses[i])}");
+        }
+    }
 }

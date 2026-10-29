@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\WordlePaint.Core\WordlePaint.Core.csproj" />
+    <ProjectReference Include="..\WordlePaint.Search\WordlePaint.Search.csproj" />
+  </ItemGroup>
+
 </Project>
