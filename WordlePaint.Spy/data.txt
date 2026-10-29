@@ -1,0 +1,105 @@
+YXXYX
+GXYXY
+GGGGG
+end pattern Rene
+YXGXG
+XGGGG
+GGGGG
+end pattern Tim
+XGXYX
+XGXGG
+GGGGG
+end pattern abelian
+GXXXX
+GXXGG
+GGGGG
+end pattern Citron
+YXYXY
+GGXXX
+GGGXY
+GGGGG
+end pattern Saša
+XGXYX
+YGGXX
+XGGYY
+XGGGG
+GGGGG
+end pattern Madlain
+YXXXG
+XGGXX
+XGGGG
+XGGGG
+GGGGG
+end pattern Toncek
+XGXXX
+YGXXX
+XGGYY
+XGGGG
+GGGGG
+end pattern Joli
+XXXYX
+XGXGG
+XGGGG
+XGGGG
+GGGGG
+end pattern Kai
+YXGXX
+YYGXX
+XXGGG
+XXGGG
+GGGGG
+end pattern coy
+end day
+XXXYX
+GGGGG
+end pattern Rene
+XXXXG
+XGXXX
+GGGGG
+end pattern Saša
+XXXXY
+YYXXX
+YGXYX
+GGGGG
+end pattern Tim
+XGXXX
+XGXXX
+XGYXX
+GGXYX
+GGGGG
+end pattern Citron
+XXXXY
+XYXXX
+YXYGX
+XXYXX
+GGGGG
+end pattern Toncek
+YYXYX
+YGYYX
+GGGGG
+end pattern abelian
+XYXXX
+XXYXX
+YGYYX
+GGGGG
+end pattern Madlain
+YXXYX
+YGXGY
+GGGGG
+end pattern Kai
+XXXXX
+XGXXX
+YGXGY
+GGGGG
+end pattern Alexandra
+YXYXX
+YGXGY
+GGGGG
+end pattern coy
+XXXXY
+YGXXX
+XGGXX
+XGGXG
+GGGGG
+end pattern Joli
+end day

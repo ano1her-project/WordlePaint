@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics;
 using WordlePaint.Core;
 using WordlePaint.Search;
+using WordlePaint.Spy;
 
 namespace WordlePaint.Interface;
 
@@ -75,6 +76,9 @@ internal class Program
                     Console.WriteLine(subs[1]);
                     PrettyPrinter.Print(targetPattern, result);
                 }
+                break;
+            case "spy":
+                Console.WriteLine(string.Join(", ", Spy.Spy.ReverseEngineerLatestGoal()));
                 break;
             default:
                 Console.WriteLine("invalid command.");

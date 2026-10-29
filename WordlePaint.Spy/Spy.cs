@@ -63,14 +63,42 @@ public class Spy
         return possibleGoals.ToArray();
     }
 
-    static void ReverseEngineerAllGoals(out Dictionary<string, string[]> allPossibleFirstGuessesEverByPlayerName)
-    {
-        allPossibleFirstGuessesEverByPlayerName = [];
-        foreach (var day in history)
+    public static string[] ReverseEngineerLatestGoal()
+    {        
+        Dictionary<string, string[]> allPossibleFirstGuessesEverByPlayerName = [];
+        for (int i = 0; i < history.Length - 1; i++)
         {
-            ReverseEngineerPossibleGoalsOfDay(day, out var possibleFirstGuessesByPlayerName);
+            ReverseEngineerPossibleGoalsOfDay(history[i], out var possibleFirstGuessesByPlayerName);
             allPossibleFirstGuessesEverByPlayerName = Combine(allPossibleFirstGuessesEverByPlayerName, possibleFirstGuessesByPlayerName);
         }
+        //
+        List<string> possibleGoalsToday = [];
+        foreach (var goal in Wordlist.goals)
+        {
+            bool goalSucceeded = true;
+            foreach (var guessPattern in history[^1].patterns)
+            {
+                var guesses = Searcher.AllGuessesThatSatisfyPatternForGoal(guessPattern.pattern, goal, out var goalSucceededForPattern);
+                bool firstGuessesMatchHistory = false;
+                foreach (var firstGuess in guesses[0])
+                {
+                    if (allPossibleFirstGuessesEverByPlayerName.ContainsKey(guessPattern.playerName) && 
+                        allPossibleFirstGuessesEverByPlayerName[guessPattern.playerName].Contains(firstGuess))
+                    {
+                        firstGuessesMatchHistory = true;
+                        break;
+                    }
+                }
+                if (!goalSucceededForPattern || !firstGuessesMatchHistory)
+                {
+                    goalSucceeded = false;
+                    break;
+                }
+            }
+            if (goalSucceeded)
+                possibleGoalsToday.Add(goal);
+        }
+        return possibleGoalsToday.ToArray();
     }
 
     //
