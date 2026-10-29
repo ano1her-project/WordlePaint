@@ -1,10 +1,8 @@
-﻿using System.Diagnostics;
-using WordlePaint.Core;
-using WordlePaint.Search;
+﻿using WordlePaint.Core;
 
 namespace WordlePaint.Tests;
 
-public class Tests
+public class CoreTests
 {
     [Theory]
     [InlineData("rebus", "rebus", LetterColor.Green, LetterColor.Green, LetterColor.Green, LetterColor.Green, LetterColor.Green)]

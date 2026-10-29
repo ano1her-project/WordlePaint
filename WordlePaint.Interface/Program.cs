@@ -69,7 +69,7 @@ internal class Program
                 else
                 {
                     var sw = Stopwatch.StartNew();
-                    var result = Searcher.AllGuessesThatSatisfyPatternForGoal(targetPattern, subs[1]);
+                    var result = Searcher.AllGuessesThatSatisfyPatternForGoal(targetPattern, subs[1], out _);
                     var time = sw.Elapsed;
                     Console.WriteLine($"found in {time}:");
                     Console.WriteLine(subs[1]);

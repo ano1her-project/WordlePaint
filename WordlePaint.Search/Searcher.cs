@@ -26,8 +26,9 @@ public class Searcher
         return result;
     }
 
-    public static string[][] AllGuessesThatSatisfyPatternForGoal(Pattern targetPattern, string goal)
+    public static string[][] AllGuessesThatSatisfyPatternForGoal(Pattern targetPattern, string goal, out bool succeeded)
     {
+        succeeded = true;
         var result = new string[targetPattern.rows.Length][];
         for (int i = 0; i < result.Length; i++)
         {
@@ -37,6 +38,8 @@ public class Searcher
                 if (targetPattern.rows[i].IsSatisfiedBy(goal, guess))
                     ithRowResult.Add(guess);
             }
+            if (ithRowResult.Count == 0)
+                succeeded = false;
             result[i] = ithRowResult.ToArray();
         }
         return result;
